@@ -49,6 +49,7 @@ class Facade {
         password = new Autentification();
     }
     public void logIn() {
+        try{
         Scanner in = new Scanner(System.in);
         int i = 0;
         System.out.println("Введите логин");
@@ -65,7 +66,14 @@ class Facade {
             i++;
         }
         if (i < 3) System.out.println("Авторизация");
-        else System.out.println("Попытки закончились. Попробуйте снова позже");
+        else {
+            System.out.println("Попытки закончились. Попробуйте снова позже");
+            throw new SecurityException("The password is incorrect!");
+        }}
+        catch(SecurityException e){
+            System.out.println(e);
+        }
+
 //        autorise.start();
     }
     public void logOff() {
